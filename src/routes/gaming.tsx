@@ -211,10 +211,6 @@ function Gaming() {
       className="relative min-h-screen overflow-hidden bg-black text-white"
       style={{ fontFamily: "'Rajdhani', system-ui, sans-serif" }}
     >
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet" />
-
       <style dangerouslySetInnerHTML={{ __html: `
         .glitch { position: relative; }
         .glitch::before, .glitch::after {
@@ -364,7 +360,7 @@ function Gaming() {
       </header>
 
       {/* ── MAIN CONTENT ── */}
-      <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-32 gap-8">
+      <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-32 gap-8 w-full max-w-screen overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -402,7 +398,7 @@ function Gaming() {
           <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#a955ff]" />
           <span className="absolute -bottom-2 -right-2 w-3 h-3 bg-[#a955ff] animate-pulse" />
 
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border border-[#a955ff]/30 bg-black">
+          <div className="relative shrink-0 w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border border-[#a955ff]/30 bg-black">
             <img src={ninja} alt="NINJA" className="w-full h-full object-cover" />
             <div
               className="absolute inset-0 pointer-events-none opacity-20"
@@ -446,7 +442,7 @@ function Gaming() {
           transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8"
         >
-          <ul className="flex flex-wrap justify-center gap-3">
+          <ul className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-5xl mx-auto">
             {socials.map(({ title, href, Icon }, idx) => (
               <motion.li
                 key={idx}
@@ -459,7 +455,7 @@ function Gaming() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={title}
-                  className="flex items-center gap-2.5 px-4 py-2.5 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md hover:border-[#a955ff]/60 hover:bg-[#a955ff]/10 transition-all duration-300"
+                  className="flex-shrink-0 flex items-center gap-2.5 px-4 py-2.5 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md hover:border-[#a955ff]/60 hover:bg-[#a955ff]/10 transition-all duration-300"
                   style={{ fontFamily: "'Orbitron', sans-serif" }}
                 >
                   <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#a955ff]/0 group-hover:border-[#a955ff] transition-colors duration-300" />

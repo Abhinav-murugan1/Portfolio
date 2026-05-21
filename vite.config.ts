@@ -13,5 +13,8 @@ export default defineConfig({
   ],
   vite: {
     assetsInclude: ['**/*.mpeg'],
+    build: {
+      target: "esnext",
+    },
   }
 });

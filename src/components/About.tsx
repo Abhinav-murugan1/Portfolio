@@ -113,9 +113,9 @@ export function About() {
               <h2 className="mb-8 text-2xl font-bold leading-[1.25] text-gradient-silver md:text-3xl lg:text-4xl">
                 Crafting digital experiences,
                 <br />
-                <span className="flex flex-wrap items-center">
+                <span className="flex flex-wrap items-baseline">
                   <span>engineering&nbsp;</span>
-                  <span className="relative inline-flex h-[1.45em] min-w-[160px] sm:min-w-[220px] md:min-w-[280px] text-left align-bottom">
+                  <span className="relative inline-flex h-[1.45em] min-w-[160px] sm:min-w-[220px] md:min-w-[280px] text-left">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={wordIndex}
@@ -123,7 +123,7 @@ export function About() {
                         animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
                         exit={{ opacity: 0, y: -15, filter: "blur(10px)", scale: 1.08 }}
                         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute left-0 bottom-0 text-[#a955ff] font-extrabold bg-gradient-to-r from-[#a955ff] to-[#ea51ff] bg-clip-text text-transparent pb-2"
+                        className="absolute left-0 top-[0.45em] text-[#a955ff] font-extrabold bg-gradient-to-r from-[#a955ff] to-[#ea51ff] bg-clip-text text-transparent"
                       >
                         {rotatingWords[wordIndex]}.
                       </motion.span>
