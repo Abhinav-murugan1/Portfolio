@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ParticleField } from "@/components/ParticleField";
-import { SideNav } from "@/components/SideNav";
-import { SocialNav } from "@/components/SocialNav"; 
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Projects } from "@/components/Projects";
-import { MyStack } from "@/components/MyStack";
-import { Contact } from "@/components/Contact";
+import { ParticleField } from "../components/ParticleField";
+import { SideNav } from "../components/SideNav";
+import { SocialNav } from "../components/SocialNav"; 
+import { Hero } from "../components/Hero";
+import { About } from "../components/About";
+import { Projects } from "../components/Projects";
+import { MyStack } from "../components/MyStack";
+import { Contact } from "../components/Contact";
 
 export const Route = createFileRoute("/")({
   component: Index,

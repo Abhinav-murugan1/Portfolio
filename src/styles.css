@@ -1,9 +1,12 @@
+/* 1. Global External CDNs (Must be first) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* 2. Framework Core Dependencies */
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
 
-/* External fallbacks helper engine */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+/* 3. Local Workspace Component Scanning Configuration */
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -77,7 +80,7 @@
   --magenta-glow: oklch(0.7 0.25 330);
 
   --gradient-hero: radial-gradient(ellipse at 20% 30%, oklch(0.3 0.15 280 / 0.35), transparent 60%),
-                   radial-gradient(ellipse at 80% 70%, oklch(0.35 0.18 200 / 0.25), transparent 55%);
+                    radial-gradient(ellipse at 80% 70%, oklch(0.35 0.18 200 / 0.25), transparent 55%);
   --gradient-button: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
   --gradient-text: linear-gradient(135deg, oklch(0.98 0.02 200), oklch(0.78 0.15 280));
 
