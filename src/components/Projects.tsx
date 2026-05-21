@@ -4,6 +4,8 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { useState, useEffect } from "react";
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
+const portrait = `https://res.cloudinary.com/${cloudName}/image/upload/v123/portrait.png`;
+
 const projects = [
   {
     index: "01",
@@ -95,8 +97,8 @@ export function Projects() {
               {/* ── PORTRAIT IMAGE (3:4 ratio) ── */}
               <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                 <img
-                  src={p.image}
-                  alt={p.title}
+                  src={portrait}
+                  alt="Project Portrait"
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
                 />

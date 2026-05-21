@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 // Cloudinary Hosted Assets
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
-const gamingBanner = `https://res.cloudinary.com/${cloudName}/image/upload/v123/banner.png`;
+const portrait = `https://res.cloudinary.com/${cloudName}/image/upload/v123/portrait.png`;
 
 const song = "https://res.cloudinary.com/${cloudName}/video/upload/v1779327603/gojo_lrhujj.mp3";
 const video = "https://res.cloudinary.com/${cloudName}/video/upload/v1779327857/sukuna1_zhtjev.mp4";
