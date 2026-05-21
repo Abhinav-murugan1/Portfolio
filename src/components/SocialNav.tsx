@@ -71,7 +71,7 @@ export function SocialNav() {
       }}
       initial="hidden"
       animate="visible"
-      className={`fixed z-40 flex pointer-events-none ${isVertical ? "flex-col" : "flex-row"} gap-4`}
+      className={`fixed z-40 hidden lg:flex pointer-events-none ${isVertical ? "flex-col" : "flex-row"} gap-4`}
     >
       {socials.map((it) => {
         const Icon = it.icon;

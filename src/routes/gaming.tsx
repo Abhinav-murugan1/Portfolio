@@ -44,11 +44,11 @@ const BOOT_LINES = [
 
 function Gaming() {
   const audioRef           = useRef<HTMLAudioElement | null>(null);
-  const visualizerAudioRef = useRef<HTMLAudioElement | null>(null);
   const canvasRef          = useRef<HTMLCanvasElement | null>(null);
   const audioCtxRef        = useRef<AudioContext | null>(null);
   const analyserRef        = useRef<AnalyserNode | null>(null);
   const sourceRef          = useRef<MediaElementAudioSourceNode | null>(null);
+  const gainNodeRef        = useRef<GainNode | null>(null);
   const rafRef             = useRef<number | null>(null);
   const isGraphInitialized = useRef(false);
 
@@ -65,46 +65,64 @@ function Gaming() {
   }, []);
 
   const initAudioGraph = () => {
-    if (!visualizerAudioRef.current || isGraphInitialized.current) return;
+    if (!audioRef.current || isGraphInitialized.current) return;
     try {
       const Ctx = window.AudioContext || (window as any).webkitAudioContext;
       const ctx = new Ctx();
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 1024;
       analyser.smoothingTimeConstant = 0.82;
-      const source = ctx.createMediaElementSource(visualizerAudioRef.current);
-      source.connect(analyser);
-      // Create a gain node with zero volume so we can analyze without hearing it
+      
+      const source = ctx.createMediaElementSource(audioRef.current);
       const gainNode = ctx.createGain();
-      gainNode.gain.value = 0;
+      gainNode.gain.value = 0.4; // Start unmuted
+      
+      // Connect: source -> analyser -> gain -> destination
+      source.connect(analyser);
       analyser.connect(gainNode);
       gainNode.connect(ctx.destination);
+      
       audioCtxRef.current = ctx;
       analyserRef.current = analyser;
       sourceRef.current = source;
+      gainNodeRef.current = gainNode;
       isGraphInitialized.current = true;
-    } catch (e) { console.error(e); }
-  };
-
-  const syncAndPlayAudio = async (shouldMute: boolean) => {
-    if (!audioRef.current || !visualizerAudioRef.current) return;
-    initAudioGraph();
-    if (audioCtxRef.current?.state === "suspended") await audioCtxRef.current.resume();
-    try {
-      audioRef.current.muted = shouldMute;
-      visualizerAudioRef.current.muted = shouldMute;
-      audioRef.current.volume = 0.4;
-      visualizerAudioRef.current.volume = 0.4;
-      visualizerAudioRef.current.currentTime = audioRef.current.currentTime;
-      if (audioRef.current.paused) await audioRef.current.play();
-      if (visualizerAudioRef.current.paused) await visualizerAudioRef.current.play();
-    } catch {}
+      
+      console.log("Audio graph initialized");
+    } catch (e) { 
+      console.error("Audio graph init error:", e); 
+    }
   };
 
   const toggleMute = async () => {
     const next = !muted;
     setMuted(next);
-    await syncAndPlayAudio(next);
+    
+    if (!audioRef.current) return;
+    
+    // Initialize audio graph if needed
+    if (!isGraphInitialized.current) {
+      initAudioGraph();
+    }
+    
+    // Resume audio context if suspended
+    if (audioCtxRef.current?.state === "suspended") {
+      await audioCtxRef.current.resume();
+    }
+    
+    // Update gain node volume
+    if (gainNodeRef.current) {
+      gainNodeRef.current.gain.value = next ? 0 : 0.4;
+    }
+    
+    // Try to play if paused
+    if (audioRef.current.paused) {
+      try {
+        await audioRef.current.play();
+      } catch (e) {
+        console.log("Play failed:", e);
+      }
+    }
   };
 
   const draw = () => {
@@ -169,37 +187,70 @@ function Gaming() {
   };
 
   useEffect(() => {
+    // Start animation loop
     rafRef.current = requestAnimationFrame(draw);
+    
     const attemptAutoplay = async () => {
-      if (!audioRef.current || !visualizerAudioRef.current) return;
-      initAudioGraph();
-      if (audioCtxRef.current?.state === "suspended") await audioCtxRef.current.resume();
+      if (!audioRef.current) return;
+      
       try {
-        audioRef.current.volume = 0.4;
-        audioRef.current.muted = muted;
-        visualizerAudioRef.current.volume = 0.4;
-        visualizerAudioRef.current.muted = muted;
+        // First try to play the audio element directly
         await audioRef.current.play();
-        visualizerAudioRef.current.currentTime = audioRef.current.currentTime;
-        await visualizerAudioRef.current.play();
-      } catch {
+        console.log("Audio autoplay successful");
+        
+        // Then initialize the audio graph for visualization
+        initAudioGraph();
+        
+        // Resume audio context if suspended
+        if (audioCtxRef.current?.state === "suspended") {
+          await audioCtxRef.current.resume();
+        }
+      } catch (e) {
+        console.log("Autoplay blocked, waiting for user interaction");
+        
+        // Fallback: wait for ANY user interaction
         const onInteraction = async () => {
-          await syncAndPlayAudio(muted);
-          window.removeEventListener("pointerdown", onInteraction);
-          window.removeEventListener("keydown", onInteraction);
+          if (!audioRef.current) return;
+          
+          try {
+            // Initialize audio graph if not already done
+            if (!isGraphInitialized.current) {
+              initAudioGraph();
+            }
+            
+            // Resume audio context if suspended
+            if (audioCtxRef.current?.state === "suspended") {
+              await audioCtxRef.current.resume();
+            }
+            
+            // Try to play
+            await audioRef.current.play();
+            console.log("Audio started after user interaction");
+          } catch (err) {
+            console.error("Play failed:", err);
+          }
         };
-        window.addEventListener("pointerdown", onInteraction);
-        window.addEventListener("keydown", onInteraction);
+        
+        // Listen to multiple interaction types
+        window.addEventListener("click", onInteraction, { once: true });
+        window.addEventListener("pointerdown", onInteraction, { once: true });
+        window.addEventListener("keydown", onInteraction, { once: true });
+        window.addEventListener("touchstart", onInteraction, { once: true });
       }
     };
-    attemptAutoplay();
+    
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(attemptAutoplay, 100);
+    
     return () => {
+      clearTimeout(timer);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (audioCtxRef.current) {
         audioCtxRef.current.close().catch(() => {});
         audioCtxRef.current = null;
         analyserRef.current = null;
         sourceRef.current = null;
+        gainNodeRef.current = null;
         isGraphInitialized.current = false;
       }
     };
@@ -244,9 +295,8 @@ function Gaming() {
         }
       `}} />
 
-      {/* Cloudinary Audio Tracks */}
+      {/* Cloudinary Audio Track */}
       <audio ref={audioRef} src={song} loop preload="auto" crossOrigin="anonymous" />
-      <audio ref={visualizerAudioRef} src={song} loop preload="auto" crossOrigin="anonymous" className="hidden" />
 
       {/* ── BOOT INTRO ── */}
       <AnimatePresence>
