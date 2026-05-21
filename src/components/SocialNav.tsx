@@ -48,7 +48,7 @@ export function SocialNav() {
     mass: 0.5 
   });
 
-  const containerLeft = useTransform(progress, [0, 1], ["350%", "28px"]);
+  const containerLeft = useTransform(progress, [0, 1], ["390%", "28px"]);
   const containerTop = useTransform(progress, [0, 1], ["73%", "80%"]);
   const containerX = useTransform(progress, [0, 1], ["-50%", "0%"]);
   const containerY = useTransform(progress, [0, 1], ["0%", "-50%"]);
