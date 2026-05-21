@@ -48,8 +48,8 @@ export function SocialNav() {
     mass: 0.5 
   });
 
-  const containerLeft = useTransform(progress, [0, 1], ["50%", "28px"]);
-  const containerTop = useTransform(progress, [0, 1], ["calc(50vh + 100px)", "50%"]);
+  const containerLeft = useTransform(progress, [0, 1], ["400%", "28px"]);
+  const containerTop = useTransform(progress, [0, 1], ["calc(73vh + 100px)", "50%"]);
   const containerX = useTransform(progress, [0, 1], ["-50%", "0%"]);
   const containerY = useTransform(progress, [0, 1], ["0%", "-50%"]);
 

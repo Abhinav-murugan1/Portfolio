@@ -30,7 +30,7 @@ interface TechIconProps {
   color: string;
   x: number;
   y: number;
-  counterRotation: ReturnType<typeof useTransform>;
+  counterRotation: ReturnType<typeof useTransform<number, number>>;
   index: number;
 }
 const TechIcon = memo(function TechIcon({ name, Icon, color, x, y, counterRotation, index }: TechIconProps) {
@@ -73,7 +73,7 @@ const TechIcon = memo(function TechIcon({ name, Icon, color, x, y, counterRotati
           style={{ color }}
         />
       </motion.div>
-      <span className="mt-3 text-[11px] lg:text-[12px] uppercase tracking-[0.25em] text-white/60 whitespace-nowrap pointer-events-none">
+      <span className="mt-3 text-[10px] lg:text-[12px] uppercase tracking-[0.25em] text-white/60 whitespace-nowrap pointer-events-none">
         {name}
       </span>
     </motion.div>
@@ -111,7 +111,7 @@ export function TechOrbit() {
   []);
 
   return (
-    <div className="relative shrink-0 scale-100 flex items-center justify-center h-[600px] w-[600px] lg:h-[700px] lg:w-[700px] lg:translate-x-[31rem]" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
+    <div className="relative shrink-0 scale-100 flex items-center justify-center h-[600px] w-[600px] lg:h-[700px] lg:w-[700px] lg:translate-x-[35rem]" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
 
       {/* Glow Center */}
       <div className="absolute pointer-events-none w-72 h-72 flex items-center justify-center">
