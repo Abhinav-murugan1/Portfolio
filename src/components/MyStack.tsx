@@ -153,7 +153,7 @@ export function MyStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-center text-center mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-[2px] w-12 bg-gradient-to-r from-[#a955ff] to-transparent" />
@@ -164,7 +164,7 @@ export function MyStack() {
           <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight tracking-tight">
             My <span className="text-gradient-neon-purple">Stack</span>
           </h2>
-          <p className="mt-3 max-w-xl text-xs text-muted-foreground/70">
+          <p className="mt-3 max-w-xl text-[13px] text-muted-foreground/70 leading-relaxed">
             Tools and technologies I work with across the full development lifecycle.
           </p>
         </motion.div>
@@ -180,14 +180,14 @@ export function MyStack() {
               transition={{ duration: 0.6, delay: ci * 0.08 }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[#a955ff]/60">
+                <span className="text-[11px] font-mono uppercase tracking-[0.35em] text-[#a955ff]/70">
                   {cat.label}
                 </span>
                 <span className="flex-1 h-[1px] bg-white/5" />
               </div>
 
               {/* Tech pills */}
-              <div className="flex flex-wrap gap-3 flex-1">
+              <div className="flex flex-wrap gap-4 flex-1">
                 {cat.items.map((tech, ti) => {
                   const gIdx = indexMap[ci][ti];
                   const isActive = activeIndex === gIdx;
@@ -201,7 +201,7 @@ export function MyStack() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: ci * 0.08 + ti * 0.05 }}
                       whileHover={{ y: -3 }}
-                      className="group relative flex items-center gap-3 px-5 py-3.5 rounded-none border border-white/6 bg-white/[0.02] hover:border-[#a955ff]/20 hover:bg-[#a955ff]/5 transition-all duration-300 cursor-default"
+                      className="group relative flex items-center gap-3.5 px-6 py-4 rounded-none border border-white/8 bg-white/[0.03] hover:border-[#a955ff]/25 hover:bg-[#a955ff]/8 transition-all duration-300 cursor-default"
                     >
                       {/* Active — fades in, spins full circle */}
                       <AnimatePresence>
@@ -236,11 +236,11 @@ export function MyStack() {
 
                       <div className="relative flex items-center justify-center">
                         <tech.Icon
-                          className="relative h-6 w-6 transition-colors duration-300"
+                          className="relative h-7 w-7 transition-colors duration-300"
                           style={{ color: tech.color }}
                         />
                       </div>
-                      <span className="text-[13px] font-mono tracking-wider text-white/60 group-hover:text-white/90 transition-colors duration-300 uppercase">
+                      <span className="text-[14px] font-mono tracking-wider text-white/70 group-hover:text-white/95 transition-colors duration-300 uppercase font-medium">
                         {tech.name}
                       </span>
                     </motion.div>

@@ -111,7 +111,7 @@ export function Contact() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="group"
               >
-                <p className="text-[11px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-1">{item.label}</p>
+                <p className="text-[12px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-1.5">{item.label}</p>
                 {item.href ? (
                   <a
                     href={item.href}
@@ -184,7 +184,7 @@ export function Contact() {
 
             {/* Message */}
             <div className="relative group">
-              <label className="text-[11px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-2 block">
+              <label className="text-[12px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-2 block">
                 Message
               </label>
               <div className={`relative border transition-colors duration-300 ${focus === "message" ? "border-[#a955ff]/50" : "border-white/8"}`}>
@@ -268,7 +268,7 @@ function FormField({
 }) {
   return (
     <div className="relative group">
-      <label className="text-[11px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-2 block">
+      <label className="text-[12px] font-mono uppercase tracking-[0.35em] text-[#a955ff] mb-2 block">
         {label}
       </label>
       <div className={`relative border transition-colors duration-300 ${isFocused ? "border-[#a955ff]/50" : "border-white/8"}`}>

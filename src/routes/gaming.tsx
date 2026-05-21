@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 // Cloudinary Hosted Assets
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
-const portrait = `https://res.cloudinary.com/difrz6i2k/image/upload/v123/portrait.png`;
+const ninja = `https://res.cloudinary.com/difrz6i2k/image/upload/v1779324749/nebula-navigator/download.jpg`;
 
 const song = "https://res.cloudinary.com/difrz6i2k/video/upload/v1779327603/gojo_lrhujj.mp3";
 const video = "https://res.cloudinary.com/difrz6i2k/video/upload/v1779327857/sukuna1_zhtjev.mp4";
@@ -74,6 +74,7 @@ function Gaming() {
       analyser.smoothingTimeConstant = 0.82;
       const source = ctx.createMediaElementSource(visualizerAudioRef.current);
       source.connect(analyser);
+      // Create a gain node with zero volume so we can analyze without hearing it
       const gainNode = ctx.createGain();
       gainNode.gain.value = 0;
       analyser.connect(gainNode);
@@ -393,8 +394,8 @@ function Gaming() {
           <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#a955ff]" />
           <span className="absolute -bottom-2 -right-2 w-3 h-3 bg-[#a955ff] animate-pulse" />
 
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 overflow-hidden border border-[#a955ff]/30 bg-black">
-            <img src={portrait} alt="NINJA" className="w-full h-full object-cover" />
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border border-[#a955ff]/30 bg-black">
+            <img src={ninja} alt="NINJA" className="w-full h-full object-cover" />
             <div
               className="absolute inset-0 pointer-events-none opacity-20"
               style={{ backgroundImage: "repeating-linear-gradient(0deg, rgba(169,85,255,0.4) 0px, rgba(169,85,255,0.4) 1px, transparent 1px, transparent 3px)" }}
@@ -456,11 +457,11 @@ function Gaming() {
                   <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#a955ff]/0 group-hover:border-[#a955ff] transition-colors duration-300" />
                   <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#a955ff]/0 group-hover:border-[#a955ff] transition-colors duration-300" />
                   <Icon
-                    className="text-lg text-[#a955ff]/60 group-hover:text-[#a955ff] transition-colors duration-300"
+                    className="text-xl text-[#a955ff]/60 group-hover:text-[#a955ff] transition-colors duration-300"
                     style={{ filter: "drop-shadow(0 0 4px rgba(169,85,255,0.4))" }}
                   />
                   <span
-                    className="text-[9px] uppercase tracking-[0.25em] text-white/40 group-hover:text-[#a955ff] transition-colors duration-300"
+                    className="text-[10px] uppercase tracking-[0.25em] text-white/40 group-hover:text-[#a955ff] transition-colors duration-300"
                   >
                     {title}
                   </span>
@@ -487,7 +488,7 @@ function Gaming() {
               <span className="w-1.5 h-1.5 bg-[#a955ff] animate-pulse" />
               <span>Now Playing</span>
               <span className="text-white/20">|</span>
-              <span className="text-white/50">GOJO.MP3</span>
+              <span className="text-white/50">IMMORTAL.MP3</span>
             </div>
             <span className="hidden sm:block text-white/30">CH_01 · 44.1kHz</span>
           </div>

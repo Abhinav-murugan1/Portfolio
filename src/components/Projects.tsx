@@ -83,7 +83,7 @@ export function Projects() {
         </motion.div>
 
         {/* ── PORTRAIT CARD GRID ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 max-w-7xl">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
@@ -124,7 +124,7 @@ export function Projects() {
 
                 {/* Tag pill */}
                 <div className="absolute bottom-4 left-4">
-                  <span className="text-[9px] font-mono text-[#a955ff]/80 border border-[#a955ff]/20 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-none uppercase tracking-widest">
+                  <span className="text-[10px] font-mono text-[#a955ff]/80 border border-[#a955ff]/20 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-none uppercase tracking-widest">
                     {p.tag}
                   </span>
                 </div>
@@ -155,12 +155,12 @@ export function Projects() {
               </div>
 
               {/* ── CONTENT BELOW IMAGE ── */}
-              <div className="flex flex-col flex-1 p-4 gap-2">
+              <div className="flex flex-col flex-1 p-4.5 gap-2.5">
                 <h3 className="text-lg font-bold text-white tracking-tight leading-snug group-hover:text-[#C084FC] transition-colors duration-400">
                   {p.title}
                 </h3>
 
-                <p className="text-[12.5px] leading-[1.75] text-muted-foreground/65 flex-1">
+                <p className="text-[13.5px] leading-[1.8] tracking-wide text-muted-foreground/75 flex-1">
                   {p.description}
                 </p>
 
@@ -169,7 +169,7 @@ export function Projects() {
                   {p.tech.map((t) => (
                     <span
                       key={t}
-                      className="text-[9.5px] font-mono tracking-wider px-2 py-0.5 rounded-none bg-white/[0.03] text-white/35 border border-white/8"
+                      className="text-[10px] font-mono tracking-wider px-2.5 py-0.5 rounded-none bg-white/[0.03] text-white/35 border border-white/8"
                     >
                       {t}
                     </span>
@@ -189,11 +189,11 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-24 flex items-center justify-center gap-4"
+          className="mt-20 flex items-center justify-center gap-4"
         >
-          <p className="text-[13px] font-light tracking-wide text-white/30 font-mono text-center">
+          <p className="text-[15px] font-light tracking-wide text-white/30 font-mono text-center">
             Behind every project is{" "}
-            <span className="relative inline-flex h-[1.3em] min-w-[320px] align-bottom justify-center">
+            <span className="relative inline-flex h-[1.4em] min-w-[360px] align-bottom justify-center">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={wordIndex}

@@ -189,7 +189,7 @@ export function About() {
                     <h3 className="text-xl font-bold text-white tracking-wide">
                       Academic Foundation
                     </h3>
-                    <span className="text-[10px] font-mono text-[#a955ff] bg-[#a955ff]/10 border border-[#a955ff]/30 px-2 py-0.5 rounded-none uppercase tracking-wider">
+                    <span className="text-[11px] font-mono text-[#a955ff] bg-[#a955ff]/10 border border-[#a955ff]/30 px-2.5 py-1 rounded-none uppercase tracking-wider">
                       MCA // Postgraduate
                     </span>
                   </div>
@@ -333,7 +333,7 @@ export function About() {
                     p-5
                   "
                 >
-                  <div className="text-[10px] font-mono text-white/80 tracking-[0.25em] bg-black/40 px-3 py-1.5 rounded-none border border-white/10 backdrop-blur-md uppercase">
+                  <div className="text-[11px] font-mono text-white/80 tracking-[0.25em] bg-black/40 px-3.5 py-2 rounded-none border border-white/10 backdrop-blur-md uppercase">
                     Abhinav // Developer
                   </div>
                 </motion.div>
@@ -367,7 +367,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover="hover"
-              className="group relative flex items-center gap-3 px-6 py-3 text-[11px] font-mono uppercase tracking-[0.25em] text-[#C084FC] cursor-pointer select-none mt-8"
+              className="group relative flex items-center gap-3 px-6 py-3 text-[12px] font-mono uppercase tracking-[0.25em] text-[#C084FC] cursor-pointer select-none mt-8"
             >
               {/* Corner notches */}
               <span className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-[#a955ff]/60 group-hover:border-[#a955ff] transition-colors duration-300" />
