@@ -360,7 +360,7 @@ export function About() {
 
             {/* Download CV Button */}
             <motion.a
-              href="https://res.cloudinary.com/difrz6i2k/image/upload/fl_attachment/Abhinav_cv_mf0w8s.pdf"
+              href="https://res.cloudinary.com/difrz6i2k/image/upload/fl_attachment/v1779384610/Abhinav_cv_mf0w8s.png"
               download
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}

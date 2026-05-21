@@ -199,19 +199,29 @@ function Gaming() {
       if (!audioRef.current) return;
       
       try {
+        // Audio element has autoPlay and muted attributes, so it should start automatically
+        // Wait a bit for it to start
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
         // Initialize the audio graph for visualization
         initAudioGraph();
         
         // Resume audio context if suspended
         if (audioCtxRef.current?.state === "suspended") {
-          console.log("AudioContext is suspended. Autoplay blocked by browser. Waiting for interaction.");
-        } else {
-          await audioRef.current.play();
-          if (gainNodeRef.current) {
-            gainNodeRef.current.gain.value = mutedRef.current ? 0 : 0.4;
-          }
-          console.log("Audio autoplay successful");
+          await audioCtxRef.current.resume();
         }
+        
+        // Now unmute through gain node (audio is already playing if autoplay succeeded)
+        if (gainNodeRef.current) {
+          gainNodeRef.current.gain.value = mutedRef.current ? 0 : 0.4;
+        }
+
+        // Try playing if paused
+        if (audioRef.current.paused) {
+          await audioRef.current.play();
+        }
+        
+        console.log("Audio autoplay successful");
       } catch (e) {
         console.error("Autoplay setup error:", e);
       }
