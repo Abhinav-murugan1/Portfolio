@@ -1,7 +1,7 @@
 import { createStartHandler } from '@tanstack/react-start/client'
-import { createRouter } from './router'
+import { getRouter } from './router'
 
-const router = createRouter()
+const router = getRouter()
 
 const StartHandler = createStartHandler({
   router,
