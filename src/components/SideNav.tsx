@@ -143,7 +143,7 @@ export function SideNav() {
                     }`}
                   />
                 </div>
-                <span className={`text-[9px] font-semibold tracking-wider uppercase transition-colors duration-200 ${
+                <span className={`text-[11px] font-semibold tracking-wider uppercase transition-colors duration-200 ${
                   isActive && !it.to ? "text-[#a955ff]" : "text-white/30"
                 }`}>
                   {it.label}

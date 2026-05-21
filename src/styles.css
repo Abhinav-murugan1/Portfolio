@@ -92,6 +92,14 @@
 @layer base {
   * {
     border-color: var(--color-border);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html, body, #root {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
   }
 
   html, body {
@@ -101,6 +109,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     cursor: default;
+    font-optical-sizing: auto;
   }
 
   input, textarea, [contenteditable="true"] {

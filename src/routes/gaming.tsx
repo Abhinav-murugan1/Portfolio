@@ -340,7 +340,7 @@ function Gaming() {
 
         <div className="flex items-center gap-3">
           <div
-            className="hidden sm:flex items-center gap-2 px-3 py-2 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md text-[9px] uppercase tracking-[0.3em]"
+            className="hidden sm:flex items-center gap-2 px-3 py-2 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md text-[11px] uppercase tracking-[0.3em]"
             style={{ fontFamily: "'Orbitron', sans-serif", color: "#a955ff", textShadow: "0 0 6px rgba(169,85,255,0.4)" }}
           >
             <span className="w-1.5 h-1.5 bg-[#a955ff] animate-pulse" />
@@ -350,7 +350,7 @@ function Gaming() {
           </div>
           <button
             onClick={toggleMute}
-            className="flex items-center gap-2 px-3 py-2 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md text-[9px] uppercase tracking-[0.3em] hover:border-[#a955ff]/50 transition-all duration-300 cursor-pointer"
+            className="flex items-center gap-2 px-3 py-2 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md text-[11px] uppercase tracking-[0.3em] hover:border-[#a955ff]/50 transition-all duration-300 cursor-pointer"
             style={{ fontFamily: "'Orbitron', sans-serif", color: "#a955ff", textShadow: "0 0 6px rgba(169,85,255,0.4)" }}
           >
             {muted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
@@ -369,7 +369,7 @@ function Gaming() {
           style={{ fontFamily: "'Orbitron', sans-serif" }}
         >
           <span className="h-px w-8 bg-[#a955ff]/50" />
-          <span className="text-[9px] uppercase tracking-[0.5em]" style={{ color: "#a955ff", textShadow: "0 0 8px rgba(169,85,255,0.6)" }}>
+          <span className="text-[11px] uppercase tracking-[0.5em]" style={{ color: "#a955ff", textShadow: "0 0 8px rgba(169,85,255,0.6)" }}>
             // PLAYER_01 :: GAME_ROOM
           </span>
           <span className="h-px w-8 bg-[#a955ff]/50" />
@@ -455,8 +455,8 @@ function Gaming() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={title}
-                  className="flex-shrink-0 flex items-center gap-2.5 px-4 py-2.5 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md hover:border-[#a955ff]/60 hover:bg-[#a955ff]/10 transition-all duration-300"
-                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                  className="w-[140px] sm:w-[160px] h-[46px] flex-shrink-0 flex items-center justify-center gap-2 px-3 py-2 border border-[#a955ff]/20 bg-black/50 backdrop-blur-md hover:border-[#a955ff]/60 hover:bg-[#a955ff]/10 transition-all duration-300"
+                  style={{ fontFamily: "'Orbitron', sans-serif", transform: 'translateZ(0)', willChange: 'transform' }}
                 >
                   <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#a955ff]/0 group-hover:border-[#a955ff] transition-colors duration-300" />
                   <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#a955ff]/0 group-hover:border-[#a955ff] transition-colors duration-300" />
@@ -465,7 +465,7 @@ function Gaming() {
                     style={{ filter: "drop-shadow(0 0 4px rgba(169,85,255,0.4))" }}
                   />
                   <span
-                    className="text-[10px] uppercase tracking-[0.25em] text-white/40 group-hover:text-[#a955ff] transition-colors duration-300"
+                    className="text-[12px] uppercase tracking-[0.25em] text-white/40 group-hover:text-[#a955ff] transition-colors duration-300"
                   >
                     {title}
                   </span>
@@ -485,7 +485,7 @@ function Gaming() {
       >
         <div className="mx-auto max-w-3xl border border-[#a955ff]/20 bg-black/70 backdrop-blur-md">
           <div
-            className="flex items-center justify-between border-b border-[#a955ff]/10 px-4 py-2 text-[9px] uppercase tracking-[0.35em]"
+            className="flex items-center justify-between border-b border-[#a955ff]/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em]"
             style={{ fontFamily: "'Orbitron', sans-serif", color: "#a955ff", textShadow: "0 0 6px rgba(169,85,255,0.4)" }}
           >
             <div className="flex items-center gap-2">
