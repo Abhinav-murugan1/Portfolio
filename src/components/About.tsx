@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-const portrait = "https://res.cloudinary.com/difrz6i2k/image/upload/v1779325006/Gemini_Generated_Image_1rfg961rfg961rfg_albyik.png";
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 export function About() {
   const containerRef = useRef<HTMLDivElement>(null);

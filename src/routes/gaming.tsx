@@ -6,9 +6,12 @@ import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 // Cloudinary Hosted Assets
-const portrait = "https://res.cloudinary.com/difrz6i2k/image/upload/v1779324749/nebula-navigator/download.jpg";
-const song = "https://res.cloudinary.com/difrz6i2k/video/upload/v1779327603/gojo_lrhujj.mp3";
-const video = "https://res.cloudinary.com/difrz6i2k/video/upload/v1779327857/sukuna1_zhtjev.mp4";
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
+const gamingBanner = `https://res.cloudinary.com/${cloudName}/image/upload/v123/banner.png`;
+
+const song = "https://res.cloudinary.com/${cloudName}/video/upload/v1779327603/gojo_lrhujj.mp3";
+const video = "https://res.cloudinary.com/${cloudName}/video/upload/v1779327857/sukuna1_zhtjev.mp4";
 
 import {
   IoLogoDiscord,

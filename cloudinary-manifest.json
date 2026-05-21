@@ -1,26 +1,3 @@
 {
-  "download.jpg": {
-    "filename": "download.jpg",
-    "url": "https://res.cloudinary.com/difrz6i2k/image/upload/v1779324749/nebula-navigator/download.jpg",
-    "publicId": "nebula-navigator/download",
-    "bytes": 119930,
-    "width": 735,
-    "height": 757
-  },
-  "project-pet.jpg": {
-    "filename": "project-pet.jpg",
-    "url": "https://res.cloudinary.com/difrz6i2k/image/upload/v1779324751/nebula-navigator/project-pet.jpg",
-    "publicId": "nebula-navigator/project-pet",
-    "bytes": 61518,
-    "width": 1280,
-    "height": 896
-  },
-  "project-salon.jpg": {
-    "filename": "project-salon.jpg",
-    "url": "https://res.cloudinary.com/difrz6i2k/image/upload/v1779324752/nebula-navigator/project-salon.jpg",
-    "publicId": "nebula-navigator/project-salon",
-    "bytes": 60922,
-    "width": 1280,
-    "height": 896
-  }
+  "provider": "cloudinary"
 }
