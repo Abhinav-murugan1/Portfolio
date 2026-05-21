@@ -86,6 +86,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "https://res.cloudinary.com/difrz6i2k/image/upload/v1779383633/ChatGPT_Image_May_21_2026_10_40_45_PM_j8qrly.png",
+      },
     ],
   }),
   shellComponent: RootShell,

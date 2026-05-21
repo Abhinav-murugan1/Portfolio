@@ -56,6 +56,11 @@ function Gaming() {
   const [bootStep, setBootStep] = useState(0);
   const [muted, setMuted]       = useState(false);
 
+  const mutedRef = useRef(muted);
+  useEffect(() => {
+    mutedRef.current = muted;
+  }, [muted]);
+
   useEffect(() => {
     const stepInterval = setInterval(() => {
       setBootStep((s) => (s < BOOT_LINES.length ? s + 1 : s));
@@ -194,34 +199,63 @@ function Gaming() {
       if (!audioRef.current) return;
       
       try {
-        // Audio element has autoPlay and muted attributes, so it should start automatically
-        // Wait a bit for it to start
-        await new Promise(resolve => setTimeout(resolve, 200));
-        
         // Initialize the audio graph for visualization
         initAudioGraph();
         
         // Resume audio context if suspended
         if (audioCtxRef.current?.state === "suspended") {
-          await audioCtxRef.current.resume();
+          console.log("AudioContext is suspended. Autoplay blocked by browser. Waiting for interaction.");
+        } else {
+          await audioRef.current.play();
+          if (gainNodeRef.current) {
+            gainNodeRef.current.gain.value = mutedRef.current ? 0 : 0.4;
+          }
+          console.log("Audio autoplay successful");
         }
-        
-        // Now unmute through gain node (audio is already playing)
-        if (gainNodeRef.current) {
-          gainNodeRef.current.gain.value = 0.4;
-        }
-        
-        console.log("Audio autoplay successful");
       } catch (e) {
         console.error("Autoplay setup error:", e);
       }
     };
+    
+    // Global interaction listener to unlock audio
+    const unlockAudio = async () => {
+      if (!audioRef.current) return;
+      try {
+        initAudioGraph();
+        if (audioCtxRef.current) {
+          if (audioCtxRef.current.state === "suspended") {
+            await audioCtxRef.current.resume();
+          }
+          if (audioRef.current.paused) {
+            await audioRef.current.play();
+          }
+          if (gainNodeRef.current) {
+            gainNodeRef.current.gain.value = mutedRef.current ? 0 : 0.4;
+          }
+          console.log("Audio unlocked successfully via user interaction");
+        }
+        removeUnlockListeners();
+      } catch (e) {
+        console.error("Failed to unlock audio:", e);
+      }
+    };
+
+    const removeUnlockListeners = () => {
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+    };
+
+    window.addEventListener("click", unlockAudio);
+    window.addEventListener("touchstart", unlockAudio);
+    window.addEventListener("keydown", unlockAudio);
     
     // Small delay to ensure DOM is ready
     const timer = setTimeout(attemptAutoplay, 100);
     
     return () => {
       clearTimeout(timer);
+      removeUnlockListeners();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (audioCtxRef.current) {
         audioCtxRef.current.close().catch(() => {});
