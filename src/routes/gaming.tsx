@@ -75,7 +75,7 @@ function Gaming() {
       
       const source = ctx.createMediaElementSource(audioRef.current);
       const gainNode = ctx.createGain();
-      gainNode.gain.value = 0.4; // Start unmuted
+      gainNode.gain.value = 0; // Start at 0, will be set to 0.4 after init
       
       // Connect: source -> analyser -> gain -> destination
       source.connect(analyser);
@@ -194,48 +194,26 @@ function Gaming() {
       if (!audioRef.current) return;
       
       try {
-        // First try to play the audio element directly
-        await audioRef.current.play();
-        console.log("Audio autoplay successful");
+        // Audio element has autoPlay and muted attributes, so it should start automatically
+        // Wait a bit for it to start
+        await new Promise(resolve => setTimeout(resolve, 200));
         
-        // Then initialize the audio graph for visualization
+        // Initialize the audio graph for visualization
         initAudioGraph();
         
         // Resume audio context if suspended
         if (audioCtxRef.current?.state === "suspended") {
           await audioCtxRef.current.resume();
         }
+        
+        // Now unmute through gain node (audio is already playing)
+        if (gainNodeRef.current) {
+          gainNodeRef.current.gain.value = 0.4;
+        }
+        
+        console.log("Audio autoplay successful");
       } catch (e) {
-        console.log("Autoplay blocked, waiting for user interaction");
-        
-        // Fallback: wait for ANY user interaction
-        const onInteraction = async () => {
-          if (!audioRef.current) return;
-          
-          try {
-            // Initialize audio graph if not already done
-            if (!isGraphInitialized.current) {
-              initAudioGraph();
-            }
-            
-            // Resume audio context if suspended
-            if (audioCtxRef.current?.state === "suspended") {
-              await audioCtxRef.current.resume();
-            }
-            
-            // Try to play
-            await audioRef.current.play();
-            console.log("Audio started after user interaction");
-          } catch (err) {
-            console.error("Play failed:", err);
-          }
-        };
-        
-        // Listen to multiple interaction types
-        window.addEventListener("click", onInteraction, { once: true });
-        window.addEventListener("pointerdown", onInteraction, { once: true });
-        window.addEventListener("keydown", onInteraction, { once: true });
-        window.addEventListener("touchstart", onInteraction, { once: true });
+        console.error("Autoplay setup error:", e);
       }
     };
     
@@ -296,7 +274,7 @@ function Gaming() {
       `}} />
 
       {/* Cloudinary Audio Track */}
-      <audio ref={audioRef} src={song} loop preload="auto" crossOrigin="anonymous" />
+      <audio ref={audioRef} src={song} loop preload="auto" autoPlay muted crossOrigin="anonymous" />
 
       {/* ── BOOT INTRO ── */}
       <AnimatePresence>
