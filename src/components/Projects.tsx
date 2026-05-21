@@ -189,11 +189,11 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-20 flex items-center justify-center gap-4"
+          className="mt-20 flex items-center justify-center gap-4 px-4"
         >
-          <p className="text-[15px] font-light tracking-wide text-white/30 font-mono text-center">
+          <p className="text-[13px] sm:text-[15px] font-light tracking-wide text-white/30 font-mono text-center max-w-full leading-relaxed">
             Behind every project is{" "}
-            <span className="relative inline-flex h-[1.4em] min-w-[360px] align-bottom justify-center">
+            <span className="relative inline-block min-h-[2.8em] sm:min-h-[1.4em] w-full sm:w-auto">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={wordIndex}
@@ -201,7 +201,7 @@ export function Projects() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute left-0 bottom-0 text-[#a955ff]/80 font-semibold"
+                  className="block sm:inline text-[#a955ff]/80 font-semibold"
                 >
                   {rotatingWords[wordIndex]}
                 </motion.span>

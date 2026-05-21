@@ -48,8 +48,8 @@ export function SocialNav() {
     mass: 0.5 
   });
 
-  const containerLeft = useTransform(progress, [0, 1], ["350%", "28px"]);
-  const containerTop = useTransform(progress, [0, 1], ["73%", "80%"]);
+  const containerLeft = useTransform(progress, [0, 1], ["340%", "28px"]);
+  const containerTop = useTransform(progress, [0, 1], ["calc(73vh + 100px)", "74%"]);
   const containerX = useTransform(progress, [0, 1], ["-50%", "0%"]);
   const containerY = useTransform(progress, [0, 1], ["0%", "-50%"]);
 
@@ -71,7 +71,7 @@ export function SocialNav() {
       }}
       initial="hidden"
       animate="visible"
-      className={`fixed z-40 hidden md:flex pointer-events-none ${isVertical ? "flex-col" : "flex-row"} gap-4`}
+      className={`fixed z-40 hidden lg:flex pointer-events-none ${isVertical ? "flex-col" : "flex-row"} gap-4`}
     >
       {socials.map((it) => {
         const Icon = it.icon;

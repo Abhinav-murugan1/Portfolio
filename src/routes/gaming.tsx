@@ -316,7 +316,15 @@ function Gaming() {
       </AnimatePresence>
 
       {/* ── CLOUDINARY VIDEO BG ── */}
-      <video autoPlay muted loop playsInline className="fixed inset-0 w-full h-full object-cover z-0 opacity-60">
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        preload="auto"
+        className="fixed inset-0 w-full h-full object-cover z-0 opacity-60"
+        style={{ pointerEvents: 'none' }}
+      >
         <source src={video} type="video/mp4" />
       </video>
       <div className="fixed inset-0 z-[1] bg-black/40 pointer-events-none" />

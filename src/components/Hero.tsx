@@ -54,7 +54,7 @@ export function Hero() {
         "
       >
         {/* LEFT SIDE */}
-        <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+        <div className="space-y-6 md:space-y-8 text-center lg:text-left pb-20 md:pb-0">
           
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
@@ -74,7 +74,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="max-w-xl text-[13.5px] leading-[1.8] tracking-wide text-muted-foreground/90 md:text-[14.5px]"
+            className="max-w-xl mx-auto lg:mx-0 text-[13.5px] leading-[1.8] tracking-wide text-muted-foreground/90 md:text-[14.5px]"
           >
             MCA student crafting modern digital experiences at the intersection of design and code.
           </motion.p>
