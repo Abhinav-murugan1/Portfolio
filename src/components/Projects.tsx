@@ -4,7 +4,7 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { useState, useEffect } from "react";
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
-const portrait = `https://res.cloudinary.com/${cloudName}/image/upload/v123/portrait.png`;
+const portrait = `https://res.cloudinary.com/difrz6i2k/image/upload/v1779325006/Gemini_Generated_Image_1rfg961rfg961rfg_albyik.png`;
 
 const projects = [
   {
@@ -13,7 +13,7 @@ const projects = [
     description:
       "A web-based salon platform for appointment booking, customer management, and service promotions — built end-to-end with a custom PHP backend.",
     tech: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
-    image: `https://res.cloudinary.com/${cloudName}/image/upload/v1779326009/nebula-navigator/project-salon.png`,
+    image: `https://res.cloudinary.com/difrz6i2k/image/upload/v1779326009/nebula-navigator/project-salon.png`,
     live: "#",
     github: "#",
     tag: "Full-Stack Web",
@@ -24,7 +24,7 @@ const projects = [
     description:
       "Cross-platform pet adoption system with shelter management, role-based access, in-app communication, and clean dashboards.",
     tech: ["React Native", "TypeScript", "Firebase", "Expo"],
-    image: `https://res.cloudinary.com/${cloudName}/image/upload/v1779326113/nebula-navigator/project-pet.png`,
+    image: `https://res.cloudinary.com/difrz6i2k/image/upload/v1779326113/nebula-navigator/project-pet.png`,
     live: "#",
     github: "#",
     tag: "Mobile / Cross-Platform",
@@ -35,7 +35,7 @@ const projects = [
     description:
       "Crafting Memorable Experiences — a beautifully designed event management website with interactive sections, animations, gallery, testimonials, and seamless contact options.",
     tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Cloudinary", "Prisma"],
-    image: `https://res.cloudinary.com/${cloudName}/image/upload/v1779326218/Screenshot_2026-05-21_064639_wvnlvo.png`,
+    image: `https://res.cloudinary.com/difrz6i2k/image/upload/v1779326218/Screenshot_2026-05-21_064639_wvnlvo.png`,
     live: "https://www.sankalpaevents.in/",
     github: "https://github.com/Abhinav-murugan1/sankalpa-events-master",
     tag: "Event Management",
